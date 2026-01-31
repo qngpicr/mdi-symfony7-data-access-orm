@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-symfony:
+  build-symfony-7:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,14 +23,10 @@ jobs:
           SAFE_COMMIT_MSG=$(echo "$RAW_MSG" | sed 's/[^[:alnum:]]/-/g' | sed 's/-\{2,\}/-/g' | sed 's/^-//;s/-$//')
           echo "COMMIT_MSG=$SAFE_COMMIT_MSG" >> $GITHUB_ENV
 
-      - name: Clear Cache
-        run: php bin/console cache:clear
-
-      - name: Package Symfony App (exclude vendor)
-        run: zip -r "${{ github.event.repository.name }}-${{ env.COMMIT_MSG }}.zip" . -x "vendor/*"
-
-      - name: Upload Artifact
+      - name: Upload Artifact (exclude vendor)
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}-${{ env.COMMIT_MSG }}
-          path: ${{ github.event.repository.name }}-${{ env.COMMIT_MSG }}.zip
+          path: |
+            .
+            !vendor/**
