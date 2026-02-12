@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Ssr;
 
 use App\Service\CpuService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
