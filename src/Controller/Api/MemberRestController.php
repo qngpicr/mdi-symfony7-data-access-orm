@@ -54,15 +54,35 @@ class MemberRestController extends AbstractController
             : $this->json(['error' => 'Member not found'], 404);
     }
 
+    // private function toArray($member): array
+    // {
+    //     return [
+    //         'id_member'       => $member->getIdMember(),
+    //         'name_member'     => $member->getNameMember(),
+    //         'email_member'    => $member->getEmailMember(),
+    //         'phone_member'    => $member->getPhoneMember(),
+    //         'join_date_member'=> $member->getJoinDateMember()?->format('Y-m-d'),
+    //         'role_member'     => $member->getRoleMember(),
+    //     ];
+    // }
+
     private function toArray($member): array
     {
         return [
-            'id_member'       => $member->getIdMember(),
-            'name_member'     => $member->getNameMember(),
-            'email_member'    => $member->getEmailMember(),
-            'phone_member'    => $member->getPhoneMember(),
-            'join_date_member'=> $member->getJoinDateMember()?->format('Y-m-d'),
-            'role_member'     => $member->getRoleMember(),
+            'id_member'      => $member->getIdMember(),
+            'id'             => $member->getId(),
+            'pass'           => $member->getPass(),
+            'name'           => $member->getName(),
+            'email'          => $member->getEmail(),
+            'regist_day'     => $member->getRegistDay()->format('Y-m-d H:i:s'),
+            'role'           => $member->getRole(),
+            'status'         => $member->getStatus(),
+            'email_verified' => $member->getEmailVerified(),
+            'fail_count'     => $member->getFailCount(),
+            'last_login'     => $member->getLastLogin()?->format('Y-m-d H:i:s'),
+            'updated_at'     => $member->getUpdatedAt()?->format('Y-m-d H:i:s'),
+            'deleted_at'     => $member->getDeletedAt()?->format('Y-m-d H:i:s'),
         ];
     }
+
 }

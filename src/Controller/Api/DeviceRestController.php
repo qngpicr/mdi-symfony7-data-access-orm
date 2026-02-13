@@ -54,14 +54,29 @@ class DeviceRestController extends AbstractController
             : $this->json(['error' => 'Device not found'], 404);
     }
 
+    // private function toArray($device): array
+    // {
+    //     return [
+    //         'id_device'      => $device->getIdDevice(),
+    //         'name_device'    => $device->getNameDevice(),
+    //         'type_device'    => $device->getTypeDevice(),
+    //         'release_device' => $device->getReleaseDevice(),
+    //         'manf_code_device' => $device->getManfCodeDevice(),
+    //     ];
+    // }
+
     private function toArray($device): array
     {
         return [
-            'id_device'      => $device->getIdDevice(),
-            'name_device'    => $device->getNameDevice(),
-            'type_device'    => $device->getTypeDevice(),
-            'release_device' => $device->getReleaseDevice(),
-            'manf_code_device' => $device->getManfCodeDevice(),
+            'id_device'       => $device->getIdDevice(),
+            'name_device'     => $device->getNameDevice(),
+            'id_cpu'          => $device->getIdCpu(),
+            'lineup_device'   => $device->getLineupDevice(),
+            'release_device'  => $device->getReleaseDevice(),
+            'weight_device'   => $device->getWeightDevice(),
+            'type_code_device'=> $device->getTypeCodeDevice(),
+            'manf_code_device'=> $device->getManfCodeDevice(),
         ];
     }
+
 }

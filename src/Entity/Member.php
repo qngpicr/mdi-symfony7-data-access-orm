@@ -14,36 +14,54 @@ class Member
     #[ORM\Column(name: 'id_member', type: 'integer')]
     private ?int $id_member = null;
 
-    #[ORM\Column(name: 'name_member', type: 'string', length: 255, nullable: true)]
-    private ?string $name_member = null;
+    #[ORM\Column(name: 'id', type: 'string', length: 50)]
+    private string $id;
 
-    #[ORM\Column(name: 'email_member', type: 'string', length: 255, nullable: true)]
-    private ?string $email_member = null;
+    #[ORM\Column(name: 'pass', type: 'string', length: 255)]
+    private string $pass;
 
-    #[ORM\Column(name: 'phone_member', type: 'string', length: 50, nullable: true)]
-    private ?string $phone_member = null;
+    #[ORM\Column(name: 'name', type: 'string', length: 100)]
+    private string $name;
 
-    #[ORM\Column(name: 'join_date_member', type: 'date', nullable: true)]
-    private ?\DateTimeInterface $join_date_member = null;
+    #[ORM\Column(name: 'email', type: 'string', length: 255)]
+    private string $email;
 
-    #[ORM\Column(name: 'role_member', type: 'string', length: 50, options: ['default' => 'USER'])]
-    private string $role_member = 'USER';
+    #[ORM\Column(name: 'regist_day', type: 'datetime')]
+    private \DateTimeInterface $regist_day;
+
+    #[ORM\Column(name: 'role', type: 'string', length: 50)]
+    private string $role;
+
+    #[ORM\Column(name: 'status', type: 'string', length: 50)]
+    private string $status;
+
+    #[ORM\Column(name: 'email_verified', type: 'boolean')]
+    private bool $email_verified = false;
+
+    #[ORM\Column(name: 'fail_count', type: 'integer')]
+    private int $fail_count = 0;
+
+    #[ORM\Column(name: 'last_login', type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $last_login = null;
+
+    #[ORM\Column(name: 'updated_at', type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $updated_at = null;
+
+    #[ORM\Column(name: 'deleted_at', type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $deleted_at = null;
 
     // --- Getter/Setter ---
     public function getIdMember(): ?int { return $this->id_member; }
-
-    public function getNameMember(): ?string { return $this->name_member; }
-    public function setNameMember(?string $name): self { $this->name_member = $name; return $this; }
-
-    public function getEmailMember(): ?string { return $this->email_member; }
-    public function setEmailMember(?string $email): self { $this->email_member = $email; return $this; }
-
-    public function getPhoneMember(): ?string { return $this->phone_member; }
-    public function setPhoneMember(?string $phone): self { $this->phone_member = $phone; return $this; }
-
-    public function getJoinDateMember(): ?\DateTimeInterface { return $this->join_date_member; }
-    public function setJoinDateMember(?\DateTimeInterface $date): self { $this->join_date_member = $date; return $this; }
-
-    public function getRoleMember(): string { return $this->role_member; }
-    public function setRoleMember(string $role): self { $this->role_member = $role; return $this; }
+    public function getId(): string { return $this->id; }
+    public function getPass(): string { return $this->pass; }
+    public function getName(): string { return $this->name; }
+    public function getEmail(): string { return $this->email; }
+    public function getRegistDay(): \DateTimeInterface { return $this->regist_day; }
+    public function getRole(): string { return $this->role; }
+    public function getStatus(): string { return $this->status; }
+    public function getEmailVerified(): bool { return $this->email_verified; }
+    public function getFailCount(): int { return $this->fail_count; }
+    public function getLastLogin(): ?\DateTimeInterface { return $this->last_login; }
+    public function getUpdatedAt(): ?\DateTimeInterface { return $this->updated_at; }
+    public function getDeletedAt(): ?\DateTimeInterface { return $this->deleted_at; }
 }
