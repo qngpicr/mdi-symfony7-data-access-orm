@@ -9,7 +9,7 @@ nelmio_cors:
         # max_age: 7200
         # allow_credentials: true
 
-        allow_origin: ['http://localhost:9300', 'https://localhost:9300']
+        allow_origin: ['http://localhost:9041']
         allow_methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
         allow_headers: ['*']   # 필요시 모든 헤더 허용
         expose_headers: []
